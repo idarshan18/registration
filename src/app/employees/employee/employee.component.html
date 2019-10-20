@@ -1,1 +1,24 @@
-<p>employee works!</p>
+<form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="$key">
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Student Name" formControlName="name">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput type="email" placeholder="Email ID" formControlName="email">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Roll No" type="text" formControlName="rollNo">
+  </mat-form-field>
+  <br>
+  <mat-form-field hintLabel="GJ01XX1234">
+    <input matInput #input maxlength="10" placeholder="Vehicle No" formControlName="vehicleNo">
+    <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+  </mat-form-field>
+  <br>
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!regForm.valid">Submit</button>
+  </div>
+</form>
